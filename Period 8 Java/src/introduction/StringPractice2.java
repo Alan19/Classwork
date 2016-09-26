@@ -40,8 +40,8 @@ public class StringPractice2 {
 	
 	public static void println(String s){
 		String printString = "";
-		int cutoff = 100;
-		//Check for words to add/s has a length > 0
+		int cutoff = 40;
+		//Check for words to add or s has a length > 0
 		while(s.length() > 0){
 			String cut = "";
 			String nextWord = "";
@@ -63,30 +63,10 @@ public class StringPractice2 {
 			}
 			printString += cut + "\n";
 		}
-		/*if(printString.length() > cutoff){
-			for(int i = 0; i*cutoff < s.length(); i++){
-				printString += getCut(s, cutoff, i+1) + "\n";
-			}
-		}*/
 		
 		System.out.println(printString);
 	}
 
-	/*private static String getCut(String s, int cutoff, int cut){
-		int cutIndex = cut * cutoff;
-		if(cutIndex > s.length()) cutIndex = s.length();
-		String currentCut = s.substring(0, cutIndex);
-		int indexOfLastSpace = currentCut.length()-1;
-		for(int i = currentCut.length()-1; i >= 0; i--){
-			String letter = currentCut.substring(i, i+1);
-			if(letter.equals(" ")){
-				indexOfLastSpace = i;
-				break;
-			}
-		}
-		currentCut = currentCut.substring(0, indexOfLastSpace - 1);
-		return currentCut;
-	}*/
 	public static void demonstrateStringMethods(){
 		String text1 = new String("Hello World");
 		String text2 = "Hello World";
