@@ -29,7 +29,7 @@ public class ZhenMain {
 		while(true){
 			println("Hi, " + user + ". How are you?");
 			response = promptInput();
-			if(findKeyword(response, "good,", 0) >= 0){
+			if(findKeyword(response, "good", 0) >= 0){
 				println("That's wonderful. So glad you feel good.");
 			}
 			else if(response.indexOf("school") >= 0){
@@ -50,31 +50,57 @@ public class ZhenMain {
 		searchString = searchString.trim();
 		searchString = searchString.toLowerCase();
 		keyword = keyword.toLowerCase();
-		
-		int psn = searchString.indexOf(0);
-		//Keep searching until context keyword foudn
+		System.out.println("The phrase is " + searchString);
+		System.out.println("The keyword is " + keyword);
+		int psn = searchString.indexOf(keyword);
+		System.out.println("The keyword was found at " + psn);
+		//Keep searching until context keyword found
 		while(psn >= 0){
-			//Assume preceeded and followed by space
+			//Assume preceded and followed by space
 			String before = "";
 			String after = "";
 			//Check character in front if it exists
 			if(psn > 0){
 				before = searchString.substring(psn - 1, psn);
+				System.out.println("the character before is " + before);
 			}
-			//Check if there is a character afte the keyword
+			//Check if there is a character after the keyword
 			if(psn + keyword.length() < searchString.length()){
 				after = searchString.substring(psn =  keyword.length(), psn + keyword.length() + 1);
+				System.out.println("the character after is " + after);
 			}
-			if(before.compareTo("a") < 0 && after.compareTo("a") < 0){
+			if(before.compareTo("a") < 0 && after.compareTo("a") < 0 &&  noNegations(searchString, psn)){
+				System.out.println("Found " + keyword + " at " + psn);
 				return psn;
 			}
 			else{
 				psn = searchString.indexOf(keyword, psn+1);
+				System.out.println("Did not find " + keyword + " checking position " + psn);
 			}
 		}
 		return -1;
 	}
 
+	private static boolean noNegations(String searchString, int psn) {
+		/**This is a helper method. A helper method is a method designed for helping designed for "helping" a larger method. Because of this, helper methods are generally private because they are only used used by the methods they are helping. Also, the project is expected to have a lot of helper methods because they make code more READABLE
+		 */
+		//Check to see if the word "no " is in the front of psn
+		//Check to see if there are 3 spaces in front then check to see if "no " is there
+		if((psn - 3 >= 0) && searchString.substring(psn-3, psn).equals("no ")){
+			return false;
+		}
+		//Check for "not "
+		if((psn - 3 >= 0) && searchString.substring(psn-6, psn).equals("not ")){
+			return false;
+		}
+		//Check for "not "
+		if((psn - 3 >= 0) && searchString.substring(psn-4, psn).equals("never ")){
+			return false;
+		}
+		return true;
+	}
+
+	
 	public static String promptInput() {
 		String userInput = input.nextLine();
 		return userInput;
