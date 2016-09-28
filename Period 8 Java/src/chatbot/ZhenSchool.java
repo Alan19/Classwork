@@ -18,5 +18,17 @@ public class ZhenSchool implements Chatbot{
 			ZhenMain.println("That's my favorite part about school too!");
 		}
 	}
+	public boolean isTriggered(String userInput) {
+		String[] triggers = {"school", "class", "teacher"};
+		//Create for loop to iterate though triggers
+		
+		if(ZhenMain.findKeyword(userInput, "school", 0) >= 0){
+			return true;
+		}
+		if(ZhenMain.findKeyword(userInput, "class", 0) >= 0){
+			return true;
+		}
+		return false;
+	}
 
 }
