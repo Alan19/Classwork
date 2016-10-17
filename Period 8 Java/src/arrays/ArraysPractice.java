@@ -1,9 +1,34 @@
 package arrays;
 
+import java.awt.Stroke;
+
 public class ArraysPractice {
 	static boolean[] boos3;
 
 	public static void main(String[] args) {
+		//How do you time a process?
+		//initializingArraysExample();
+		long currentTime = System.currentTimeMillis();
+		String[] someStrings = new String[1000];
+		standardPopulate(someStrings);
+		String s = someStrings[999];
+		makeSpecial(s);
+		print(someStrings);
+		long endTime = System.currentTimeMillis();
+		System.out.println("The process took " + (endTime - currentTime) + " ms.");
+	}
+	
+	private static void makeSpecial(String s) {
+		s = "THIS STRING IS SPECIAL!";
+	}
+
+	private static void print(String[] s) {
+		for(int i = 0; i < s.length; i++){
+			System.out.println(s[i]);
+		}
+	}
+
+	public static void initializingArraysExample(){
 		boolean[] boos1 = new boolean[3];
 		
 		//This can only be done at the declaration because it sets size and content
@@ -49,6 +74,12 @@ public class ArraysPractice {
 		}
 		for(String s: someStrings1){
 			System.out.println(s);
+		}
+	}
+	private static void standardPopulate(String[] s) {
+		for(int i = 0; i < s.length; i++){
+			String string = "String #" + (i+1);
+			s[i] = string;
 		}
 	}
 
