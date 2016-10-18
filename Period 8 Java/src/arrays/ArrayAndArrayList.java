@@ -15,7 +15,7 @@ public class ArrayAndArrayList {
 		for(int n: array){
 			counter[n-1]++;
 		}
-		for(int i = numberOfDice; i < counter.length; i++){
+		for(int i = numberOfDice - 1; i < counter.length; i++){
 			System.out.println((i+1) + " was rolled " + 100 * counter[i] / array.length+ " percent of the time");
 		}
 	}
