@@ -1,7 +1,5 @@
 package arrays;
 
-import java.awt.Stroke;
-
 public class ArraysPractice {
 	static boolean[] boos3;
 
@@ -62,6 +60,7 @@ public class ArraysPractice {
 		
 		//Object Arrays
 		String[] someStrings1 = new String[3];
+		@SuppressWarnings("unused")
 		String[] someStrings2 = {"a", "b", "c"};
 		
 		/*for(String s:someStrings1){
