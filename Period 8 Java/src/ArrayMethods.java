@@ -25,8 +25,10 @@ public class ArrayMethods {
 //    	cycleThrough(intArray, 26);
 //    	print(intArray);
 //    	System.out.println(isSorted(intArray3));
-    	sortArray(doubleArray);
-    	print(getStats(doubleArray));
+//    	sortArray(doubleArray);
+//    	print(getStats(doubleArray));
+//    	System.out.println(searchSorted(intArray3, 1));
+    	System.out.println(longestSharedSequence(intArray, intArray2));
     }
     
     private static void print(double[] array) {
@@ -72,12 +74,31 @@ public class ArrayMethods {
      * 
      * Note: You should attempt to write a method that is more efficient that searchUnsorted
      * */
-    	for(int i = 0; i < sortedArrayToSearch.length; i++){
-    		if(sortedArrayToSearch[i] == key){
-    			return i;
+//    	for(int i = 0; i < sortedArrayToSearch.length; i++){
+//    		if(sortedArrayToSearch[i] == key){
+//    			return i;
+//    		}
+//    	}
+    	int max = 0;
+    	int min = sortedArrayToSearch.length-1;
+    	int mid = sortedArrayToSearch.length/2;
+    	while(true){
+    		System.out.println(min + " " + mid + " " + max);
+    		if(key < sortedArrayToSearch[sortedArrayToSearch.length-1] || key > sortedArrayToSearch[0] || (max == min && sortedArrayToSearch[min] != key)){
+    			return -1;
+    		}
+    		else if(sortedArrayToSearch[mid] == key){
+    			return key;
+    		}
+    		else if(key > sortedArrayToSearch[mid]){
+				min = mid;
+				mid = (min+max)/2;
+			}
+    		else if(key < sortedArrayToSearch[mid]){
+    			max = mid;
+    			mid = (min+max)/2;
     		}
     	}
-    	return -1;
     }
     
     public static boolean isSorted(int[] array){
@@ -236,7 +257,7 @@ public class ArrayMethods {
     
 
     public static int longestConsecutiveSequence(int[] array1){
-        /**This method counts the longest consequtive sequence in an array.
+        /**This method counts the longest consecutive sequence in an array.
          * It does not matter where the sequence begins
          * If there are no consecutive numbers, the method should return '1'
          * 
@@ -272,39 +293,38 @@ public class ArrayMethods {
          * Examples:
          * longestSequence({9,6,3,4,3,8,9}, {9,6,3,4,3,6,7}) returns '5', since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long 
          * longestSequence({0,9,6,3,4,3,8,9}, {1,2,9,6,3,4,3,6,7}) returns '5', 
-         *          since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
+         * since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
          * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
          * */
         
-    	if(array1.length == 0 || array2.length == 0){
-    		return 0;
-    	}
+    	int max = 0;
+    	int count = 0;
     	
-    	if(array1.length > array2.length){
-    		return checkLongestSharedSequence(array1, array1, array2);    		
-    	}
-    	else{
-    		return checkLongestSharedSequence(array2, array1, array2);    
-    	}
+    	for (int seqStart = 0; seqStart < array1.length-1; seqStart++) {
+    		int seqEnd = seqStart;
+			int[] seq = getSequence(seqStart, seqEnd, array1);
+			if(checkSequence(seq, array2)){
+				count++;
+				if(count > max){
+					max = count;
+				}
+			}
+			//Reset the count after checking the sequence
+			count = 0;
+		}
+    	
+    	return max;
     	
     }
 
-    private static int checkLongestSharedSequence(int[] array, int[] array1, int[] array2) {
-    	int currentStreak = 0;
-    	int highestStreak = 0;
-    	for(int i = 0; i < array.length-1; i++){
-    		if(array1[i] == array2[i]){
-    			currentStreak++;
-    		}
-    		else{
-    			if(currentStreak > highestStreak){
-    				highestStreak = currentStreak;
-    			}
-    			currentStreak = 1;
-    		}
-    	}
-    	return highestStreak;
-		
+	private static boolean checkSequence(int[] seq, int[] array2) {
+		// Returns true if a sequence is fount inside array2
+		return false;
+	}
+
+	private static int[] getSequence(int seqStart, int seqEnd, int[] array1) {
+		// Returns a sub-array containing the elements in array 1 from seqStart to seqEnd
+		return null;
 	}
 
 	public static int[] generateDistinctItemsList(int n){
