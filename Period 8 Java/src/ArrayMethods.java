@@ -14,12 +14,29 @@ public class ArrayMethods {
       * DO NOT spend hours and hours trying to fix perfect code just because my test
       * says that it isn't perfect!
       * */
-    	int[] intArray = {1,2,3,4,5,6,7};
-    	String[] stringArray = {"a", "b", "c", "d", "e"};
-    	shuffle(stringArray);
+    	int[] intArray = {9,6,3,4,3,8,9};
+    	int[] intArray2 = {9,6,3,4,3,6,7};
+    	int[] intArray3 = {4,3,2,1};
+    	double[] doubleArray = {1.0,3.1,7.3,5.8};
+//    	String[] stringArray = {"a", "b", "c", "d", "e"};
+//    	shuffle(stringArray);
+//    	System.out.println(generateBetweenOneAndN(2));
+//    	print(generateDistinctItemsList(10));
+//    	cycleThrough(intArray, 26);
+//    	print(intArray);
+//    	System.out.println(isSorted(intArray3));
+    	sortArray(doubleArray);
+    	print(getStats(doubleArray));
     }
     
-    private static void shuffle(Object[] array) {
+    private static void print(double[] array) {
+		for (double d : array) {
+			System.out.println(d);
+		}
+		
+	}
+
+	private static void shuffle(Object[] array) {
     	for(int i = 0; i < array.length; i++){
     		int random = (int)(Math.random()*6);
     		swap(array, i, random);
@@ -55,6 +72,11 @@ public class ArrayMethods {
      * 
      * Note: You should attempt to write a method that is more efficient that searchUnsorted
      * */
+    	for(int i = 0; i < sortedArrayToSearch.length; i++){
+    		if(sortedArrayToSearch[i] == key){
+    			return i;
+    		}
+    	}
     	return -1;
     }
     
@@ -84,10 +106,92 @@ public class ArrayMethods {
          * index 5 = the number of values below the mean
          * */
          double[] stats = new double[6];
+         sortArray(array);
+         stats[0] = getMean(array);
+         stats[1] = getMax(array);
+         stats[2] = getMin(array);
+         stats[3] = getMedian(array);
+         stats[4] = valuesGreaterThanOrEqualToMean(array, stats[0]);
+         stats[5] = valuesBelowMean(array, stats[0]);
+         
          return stats;
     }
     
-    public static void reverseOrder(int[] array){
+    private static double valuesBelowMean(double[] array, double mean) {
+    	int values = 0;
+		for(int i = 0; i < array.length; i++){
+			if(array[i] < mean){
+				values++;
+			}
+		}
+		return values;
+	}
+
+	private static double valuesGreaterThanOrEqualToMean(double[] array, double mean) {
+		int values = 0;
+		for(int i = 0; i < array.length; i++){
+			if(array[i] >= mean){
+				values++;
+			}
+		}
+		return values;
+	}
+
+	private static double getMedian(double[] array) {
+		if(array.length %  2 == 0){
+			return (array[array.length/2]+array[(array.length/2)-1])/2;
+		}
+		else{
+			return (array[array.length/2]);
+		}
+	}
+
+	private static double getMin(double[] array) {
+		return array[0];
+	}
+
+	private static void sortArray(double[] array) {
+		//Sorts in ascending order
+    	while(!isSortedDouble(array)){
+			for(int i = 0; i < array.length-1; i++){
+				if(!(array[i] < array[i+1])){
+	        		swap(array, i, i+1);
+	        	}
+			}
+		}
+		
+	}
+
+	private static void swap(double[] arr, int a, int b) {
+		double temp = arr[b];
+		arr[b] = arr[a];
+		arr[a] = temp;
+		
+	}
+
+	private static boolean isSortedDouble(double[] array) {
+		for(int i = 0; i < array.length-1; i++){
+        	if(!(array[i] < array[i+1])){
+        		return false;
+        	}
+        }
+    	return true;
+	}
+
+	private static double getMax(double[] array) {
+		return array[array.length-1];
+	}
+
+	private static double getMean(double[] array) {
+		// TODO Auto-generated method stub
+    	double sum = 0;
+		for(int i = 0; i < array.length; i++){
+			sum += array[i];
+		}
+		return sum/(array.length);
+	}
+
+	public static void reverseOrder(int[] array){
         /**
          * this method reverses the order of the array passed to it.
          * Not that this method does not have a return type. You do not need to copy the array first
@@ -121,7 +225,13 @@ public class ArrayMethods {
          * countDifferences({1,2,3},{1,3,2}) returns 2, since '2' and '3' are both present, but different locations
          * 
          * */
-         return 0;
+         int differences = 0;
+         for(int i = 0; i < array1.length; i++){
+        	 if(array1[i] != array2[i]){
+        		 differences++;
+        	 }
+         }
+         return differences;
     }
     
 
@@ -135,7 +245,23 @@ public class ArrayMethods {
          * longestSequence({0,9,10,11,4,3,8,9}) returns '3', since '9,10,11' is 3 integers long
          * longestSequence({0,9,8,11,4,3,7,9}) returns '1', since there are no consecutive integers
          * */
-    	return 1;
+    	if(array1.length == 0){
+    		return 0;
+    	}
+    	int currentStreak = 1;
+    	int highestStreak = 1;
+    	for(int i = 0; i < array1.length-1; i++){
+    		if(array1[i] == array1[i+1]-1){
+    			currentStreak++;
+    		}
+    		else{
+    			if(currentStreak > highestStreak){
+    				highestStreak = currentStreak;
+    			}
+    			currentStreak = 1;
+    		}
+    	}
+    	return highestStreak;
     }
 
     public static int longestSharedSequence(int[] array1, int[] array2){
@@ -150,10 +276,38 @@ public class ArrayMethods {
          * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
          * */
         
-        return 0;
+    	if(array1.length == 0 || array2.length == 0){
+    		return 0;
+    	}
+    	
+    	if(array1.length > array2.length){
+    		return checkLongestSharedSequence(array1, array1, array2);    		
+    	}
+    	else{
+    		return checkLongestSharedSequence(array2, array1, array2);    
+    	}
+    	
     }
 
-    public static int[] generateDistinctItemsList(int n){
+    private static int checkLongestSharedSequence(int[] array, int[] array1, int[] array2) {
+    	int currentStreak = 0;
+    	int highestStreak = 0;
+    	for(int i = 0; i < array.length-1; i++){
+    		if(array1[i] == array2[i]){
+    			currentStreak++;
+    		}
+    		else{
+    			if(currentStreak > highestStreak){
+    				highestStreak = currentStreak;
+    			}
+    			currentStreak = 1;
+    		}
+    	}
+    	return highestStreak;
+		
+	}
+
+	public static int[] generateDistinctItemsList(int n){
         /**
          * This method needs to generate an int[] of length n that contains distinct, random integers
          * between 1 and 2n 
@@ -161,11 +315,31 @@ public class ArrayMethods {
          * contains only entries between 1 and 2n (inclusive) and has no duplicates
          * 
          * */
-        return null; 
+    	int[] intArray = new int[n];
+    	for(int i = 0; i < n; i++){
+    		 int genNumber = generateBetweenOneAndN(2*n);
+    		 if(!notDuplicate(genNumber, intArray)){
+    			 while(!notDuplicate(genNumber, intArray)){
+    				 genNumber = generateBetweenOneAndN(2*n);
+    			 }
+    		 }
+    		 intArray[i] = genNumber;
+    	}
+		return intArray;
+
     }
     
     
-    public static void cycleThrough(int[] array, int n){
+    private static boolean notDuplicate(int genNumber, int[] intArray) {
+		for(int i = 0; i < intArray.length; i++){
+			if(genNumber == intArray[i]){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static void cycleThrough(int[] array, int n){
         /** This problem represents people moving through a line.
          * Once they get to the front of the line, they get what they've been waiting for, then they 
          * immediately go to the end of the line and "cycle through" again.
@@ -188,11 +362,27 @@ public class ArrayMethods {
          * CHALLENGE
          * For extra credit, make your method handle NEGATIVE n
          * */
+		for(int i = 0; i < n; i++){
+			//System.out.println(i);
+			for(int j = 0; j < array.length-1; j++){
+					swapIntArray(array, j, j+1);
+			}
+		}
     }
     
-    private static void print(int[] array){
+    private static void swapIntArray(int[] arr, int b, int a) {
+    	int temp = arr[b];
+		arr[b] = arr[a];
+		arr[a] = temp;
+	}
+
+	private static void print(int[] array){
     	for(int n: array){
     		System.out.println(n);
     	}
+    }
+    
+    private static int generateBetweenOneAndN(int n){
+    	return (int) (Math.random() * n) + 1;
     }
 }
