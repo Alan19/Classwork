@@ -14,9 +14,10 @@ public class ArrayMethods {
       * DO NOT spend hours and hours trying to fix perfect code just because my test
       * says that it isn't perfect!
       * */
-    	int[] intArray = {9,6,3,4,3,8,9};
-    	int[] intArray2 = {9,6,3,4,3,6,7};
+    	int[] intArray = {9,6,1,4,3,6,7,9};
+    	int[] intArray2 = {9,6,5,8,3,6,7,0};
     	int[] intArray3 = {4,3,2,1};
+    	int[] intArray4 = {1,2,3,4};
     	double[] doubleArray = {1.0,3.1,7.3,5.8};
 //    	String[] stringArray = {"a", "b", "c", "d", "e"};
 //    	shuffle(stringArray);
@@ -27,8 +28,8 @@ public class ArrayMethods {
 //    	System.out.println(isSorted(intArray3));
 //    	sortArray(doubleArray);
 //    	print(getStats(doubleArray));
-//    	System.out.println(searchSorted(intArray3, 1));
-    	System.out.println(longestSharedSequence(intArray, intArray2));
+    	System.out.println(searchSorted(intArray3, 1));
+//    	System.out.println(longestSharedSequence(intArray, intArray2));
     }
     
     private static void print(double[] array) {
@@ -79,26 +80,24 @@ public class ArrayMethods {
 //    			return i;
 //    		}
 //    	}
-    	int max = 0;
-    	int min = sortedArrayToSearch.length-1;
-    	int mid = sortedArrayToSearch.length/2;
-    	while(true){
-    		System.out.println(min + " " + mid + " " + max);
-    		if(key < sortedArrayToSearch[sortedArrayToSearch.length-1] || key > sortedArrayToSearch[0] || (max == min && sortedArrayToSearch[min] != key)){
-    			return -1;
+    	int lowerBound = 0;
+    	int upperBound = sortedArrayToSearch.length-1;
+    	while(upperBound >= lowerBound){
+    		int mid = (lowerBound+upperBound)/2;
+    		System.out.println(lowerBound + " " + mid + " " + upperBound);
+    		if(key == sortedArrayToSearch[mid]){
+    			return mid;
     		}
-    		else if(sortedArrayToSearch[mid] == key){
-    			return key;
-    		}
-    		else if(key > sortedArrayToSearch[mid]){
-				min = mid;
-				mid = (min+max)/2;
-			}
     		else if(key < sortedArrayToSearch[mid]){
-    			max = mid;
-    			mid = (min+max)/2;
+    			System.out.println("a");
+    			lowerBound = mid + 1;
+    		}
+    		else{
+    			System.out.println("b");
+    			upperBound = mid - 1;
     		}
     	}
+    	return -1;
     }
     
     public static boolean isSorted(int[] array){
@@ -204,7 +203,6 @@ public class ArrayMethods {
 	}
 
 	private static double getMean(double[] array) {
-		// TODO Auto-generated method stub
     	double sum = 0;
 		for(int i = 0; i < array.length; i++){
 			sum += array[i];
@@ -301,12 +299,16 @@ public class ArrayMethods {
     	int count = 0;
     	
     	for (int seqStart = 0; seqStart < array1.length-1; seqStart++) {
-    		int seqEnd = seqStart;
-			int[] seq = getSequence(seqStart, seqEnd, array1);
-			if(checkSequence(seq, array2)){
-				count++;
-				if(count > max){
-					max = count;
+			int[] seq = getSequence(seqStart, array1.length, array1);
+			for(int j = 0; j < seq.length; j++){
+				if(!checkSequence(seq, array2, j, seqStart)){
+					break;
+				}
+				else{
+					count++;
+					if(count > max){
+						max = count;
+					}
 				}
 			}
 			//Reset the count after checking the sequence
@@ -317,14 +319,20 @@ public class ArrayMethods {
     	
     }
 
-	private static boolean checkSequence(int[] seq, int[] array2) {
-		// Returns true if a sequence is fount inside array2
+	private static boolean checkSequence(int[] seq, int[] array2, int n, int i) {
+		if(seq[n] == array2[n+i]){
+			return true;
+		}
 		return false;
 	}
 
 	private static int[] getSequence(int seqStart, int seqEnd, int[] array1) {
 		// Returns a sub-array containing the elements in array 1 from seqStart to seqEnd
-		return null;
+		int[] intArray = new int[seqEnd-seqStart];
+		for(int i = 0; i  < intArray.length; i++){
+			intArray[i] = array1[seqStart+i];
+		}
+		return intArray;
 	}
 
 	public static int[] generateDistinctItemsList(int n){
