@@ -28,8 +28,9 @@ public class ArrayMethods {
 //    	System.out.println(isSorted(intArray3));
 //    	sortArray(doubleArray);
 //    	print(getStats(doubleArray));
-    	System.out.println(searchSorted(intArray3, 1));
-//    	System.out.println(longestSharedSequence(intArray, intArray2));
+//    	System.out.println(searchSorted(intArray3, 1));
+    	System.out.println(longestSharedSequence(intArray, intArray2));
+//    	print(getSequence(0, 4, intArray));
     }
     
     private static void print(double[] array) {
@@ -89,11 +90,11 @@ public class ArrayMethods {
     			return mid;
     		}
     		else if(key < sortedArrayToSearch[mid]){
-    			System.out.println("a");
+    			//System.out.println("a");
     			lowerBound = mid + 1;
     		}
     		else{
-    			System.out.println("b");
+    			//System.out.println("b");
     			upperBound = mid - 1;
     		}
     	}
@@ -299,16 +300,14 @@ public class ArrayMethods {
     	int count = 0;
     	
     	for (int seqStart = 0; seqStart < array1.length-1; seqStart++) {
-			int[] seq = getSequence(seqStart, array1.length, array1);
+    		int seqEnd = seqStart;
+    		int[] seq = getSequence(seqStart, seqEnd, array1);
 			for(int j = 0; j < seq.length; j++){
-				if(!checkSequence(seq, array2, j, seqStart)){
-					break;
+				if(checkSequence(seq, array2)){
+					count = seq.length;
 				}
-				else{
-					count++;
-					if(count > max){
-						max = count;
-					}
+				if(count > max){
+					max = count;
 				}
 			}
 			//Reset the count after checking the sequence
@@ -319,18 +318,29 @@ public class ArrayMethods {
     	
     }
 
-	private static boolean checkSequence(int[] seq, int[] array2, int n, int i) {
-		if(seq[n] == array2[n+i]){
-			return true;
+	@SuppressWarnings("unused")
+	private static boolean checkSequence(int[] seq, int[] array2) {
+		//i checks every value in arr
+		for (int i = 0; i < array2.length; i++) {
+			//j checks every value in seq
+			for (int j = 0; j < seq.length; j++) {
+				if(j+i < array2.length && array2[j+i] != seq[j]){
+					//breaks out of inner-most for loop unless particular loop is specified (labels: "A: for()")
+					break;
+				}
+				else if(j == seq.length-1){
+					return true;
+				}
+			}
 		}
 		return false;
 	}
 
 	private static int[] getSequence(int seqStart, int seqEnd, int[] array1) {
-		// Returns a sub-array containing the elements in array 1 from seqStart to seqEnd
 		int[] intArray = new int[seqEnd-seqStart];
-		for(int i = 0; i  < intArray.length; i++){
-			intArray[i] = array1[seqStart+i];
+		for (int i = 0; i < seqEnd-seqStart; i++) {
+			//System.out.println(intArray[i]);
+			intArray[i] = array1[i+seqStart];
 		}
 		return intArray;
 	}
