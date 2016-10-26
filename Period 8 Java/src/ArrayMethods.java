@@ -15,7 +15,7 @@ public class ArrayMethods {
       * says that it isn't perfect!
       * */
     	int[] intArray = {9,6,1,4,3,6,7,9};
-    	int[] intArray2 = {9,6,5,8,3,6,7,0};
+    	int[] intArray2 = {9,6,5,8,3,6,7,0,6,1,4,3,6,7,9};
     	int[] intArray3 = {4,3,2,1};
     	int[] intArray4 = {1,2,3,4};
     	double[] doubleArray = {1.0,3.1,7.3,5.8};
@@ -300,9 +300,10 @@ public class ArrayMethods {
     	int count = 0;
     	
     	for (int seqStart = 0; seqStart < array1.length-1; seqStart++) {
-    		int seqEnd = seqStart;
+    		int seqEnd = array1.length-1;
     		int[] seq = getSequence(seqStart, seqEnd, array1);
 			for(int j = 0; j < seq.length; j++){
+				seqEnd = array1.length - j - 1;
 				if(checkSequence(seq, array2)){
 					count = seq.length;
 				}
@@ -318,7 +319,6 @@ public class ArrayMethods {
     	
     }
 
-	@SuppressWarnings("unused")
 	private static boolean checkSequence(int[] seq, int[] array2) {
 		//i checks every value in arr
 		for (int i = 0; i < array2.length; i++) {
