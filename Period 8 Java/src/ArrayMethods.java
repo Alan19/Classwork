@@ -14,8 +14,8 @@ public class ArrayMethods {
       * DO NOT spend hours and hours trying to fix perfect code just because my test
       * says that it isn't perfect!
       * */
-    	int[] intArray = {9,6,1,4,3,6,7,9};
-    	int[] intArray2 = {9,6,5,8,3,6,7,0,6,1,4,3,6,7,9};
+    	int[] intArray = {0,9,6,3,4,3,8,9};
+    	int[] intArray2 = {1,2,4,6,2,1,2,3,4,3,4,5,6};
     	int[] intArray3 = {4,3,2,1};
     	int[] intArray4 = {1,2,3,4};
     	double[] doubleArray = {1.0,3.1,7.3,5.8};
@@ -299,12 +299,16 @@ public class ArrayMethods {
     	int max = 0;
     	int count = 0;
     	
-    	for (int seqStart = 0; seqStart < array1.length-1; seqStart++) {
-    		int seqEnd = array1.length-1;
+    	for (int seqStart = 0; seqStart < array1.length; seqStart++) {
+    		int seqEnd = array1.length;
     		int[] seq = getSequence(seqStart, seqEnd, array1);
+//    		print(array2);
 			for(int j = 0; j < seq.length; j++){
 				seqEnd = array1.length - j - 1;
+				seq = getSequence(seqStart, seqEnd, array1);
 				if(checkSequence(seq, array2)){
+//					System.out.println("updated "+ (seq.length));
+//					print(seq);
 					count = seq.length;
 				}
 				if(count > max){
@@ -324,6 +328,8 @@ public class ArrayMethods {
 		for (int i = 0; i < array2.length; i++) {
 			//j checks every value in seq
 			for (int j = 0; j < seq.length; j++) {
+//				print(seq);
+//				System.out.println(array2[j+i] + ", " + seq[j]);
 				if(j+i < array2.length && array2[j+i] != seq[j]){
 					//breaks out of inner-most for loop unless particular loop is specified (labels: "A: for()")
 					break;
@@ -416,8 +422,9 @@ public class ArrayMethods {
 
 	private static void print(int[] array){
     	for(int n: array){
-    		System.out.println(n);
+    		System.out.print(n + ",");
     	}
+    	System.out.println();
     }
     
     private static int generateBetweenOneAndN(int n){
