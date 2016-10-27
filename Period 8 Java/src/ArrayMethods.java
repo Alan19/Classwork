@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 import javax.swing.plaf.multi.MultiDesktopIconUI;
 
@@ -19,6 +20,7 @@ public class ArrayMethods {
     	int[] intArray3 = {4,3,2,1};
     	int[] intArray4 = {1,2,3,4};
     	double[] doubleArray = {1.0,3.1,7.3,5.8};
+//    	print(getSequence(0, 4, intArray2));
 //    	String[] stringArray = {"a", "b", "c", "d", "e"};
 //    	shuffle(stringArray);
 //    	System.out.println(generateBetweenOneAndN(2));
@@ -28,7 +30,7 @@ public class ArrayMethods {
 //    	System.out.println(isSorted(intArray3));
 //    	sortArray(doubleArray);
 //    	print(getStats(doubleArray));
-//    	System.out.println(searchSorted(intArray3, 1));
+//    	System.out.println(Sorted(intArray3, 1));
     	System.out.println(longestSharedSequence(intArray, intArray2));
 //    	print(getSequence(0, 4, intArray));
     }
@@ -85,7 +87,7 @@ public class ArrayMethods {
     	int upperBound = sortedArrayToSearch.length-1;
     	while(upperBound >= lowerBound){
     		int mid = (lowerBound+upperBound)/2;
-    		System.out.println(lowerBound + " " + mid + " " + upperBound);
+//    		System.out.println(lowerBound + " " + mid + " " + upperBound);
     		if(key == sortedArrayToSearch[mid]){
     			return mid;
     		}
@@ -300,9 +302,13 @@ public class ArrayMethods {
     	int count = 0;
     	
     	for (int seqStart = 0; seqStart < array1.length-1; seqStart++) {
-    		int seqEnd = seqStart;
+    		int seqEnd = array1.length;
     		int[] seq = getSequence(seqStart, seqEnd, array1);
 			for(int j = 0; j < seq.length; j++){
+				seqEnd = seq.length-j;
+				seq = getSequence(seqStart, seqEnd, array1);
+//				print(seq);
+				System.out.print(seqStart + " " + j);
 				if(checkSequence(seq, array2)){
 					count = seq.length;
 				}
@@ -339,9 +345,9 @@ public class ArrayMethods {
 	private static int[] getSequence(int seqStart, int seqEnd, int[] array1) {
 		int[] intArray = new int[seqEnd-seqStart];
 		for (int i = 0; i < seqEnd-seqStart; i++) {
-			//System.out.println(intArray[i]);
 			intArray[i] = array1[i+seqStart];
 		}
+//		System.out.println(Arrays.toString(intArray));
 		return intArray;
 	}
 
@@ -416,7 +422,7 @@ public class ArrayMethods {
 
 	private static void print(int[] array){
     	for(int n: array){
-    		System.out.println(n);
+    		System.out.print(n + ", ");
     	}
     }
     
