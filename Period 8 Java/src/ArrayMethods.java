@@ -15,8 +15,8 @@ public class ArrayMethods {
       * DO NOT spend hours and hours trying to fix perfect code just because my test
       * says that it isn't perfect!
       * */
-    	int[] intArray = {9,6,1,4,3,6,7,9};
-    	int[] intArray2 = {9,6,5,8,3,6,7,0};
+    	int[] intArray = {1,-12,3,8,-10,19,18,9,3,3,-3,-3};
+    	int[] intArray2 = {0,13,1,-12,4,9,-10,11,21,9,3,3,-3,-3};
     	int[] intArray3 = {4,3,2,1};
     	int[] intArray4 = {1,2,3,4};
     	double[] doubleArray = {1.0,3.1,7.3,5.8};
@@ -32,6 +32,8 @@ public class ArrayMethods {
 //    	print(getStats(doubleArray));
 //    	System.out.println(Sorted(intArray3, 1));
     	System.out.println(longestSharedSequence(intArray, intArray2));
+//    	print(getSequence(1, 2, intArray));
+//    	generateAllPossibleArrays(intArray2);
 //    	print(getSequence(0, 4, intArray));
     }
     
@@ -297,8 +299,10 @@ public class ArrayMethods {
          * since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
          * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
          * */
-        
+//        print(array1);
+//        print(array2);
     	int max = 0;
+<<<<<<< HEAD
     	int count = 0;
     	
     	for (int seqStart = 0; seqStart < array1.length-1; seqStart++) {
@@ -320,10 +324,30 @@ public class ArrayMethods {
 			count = 0;
 		}
     	
+=======
+    	int[][] arrayLengths = new int[array1.length][array2.length];
+    	for(int i = 0; i < array1.length; i++){
+    		for(int j = 0; j < array2.length; j++){
+    			if(array1[i] == array2[j]){
+    				if(i == 0 || j == 0){
+    					arrayLengths[i][j] = 1;
+    				}
+    				else{
+    					arrayLengths[i][j] = arrayLengths[i-1][j-1]+1;
+    				}
+    				if(max < arrayLengths[i][j]){
+    					max = arrayLengths[i][j];
+    				}
+    				
+    			}
+    		}
+    	}
+>>>>>>> refs/remotes/origin/master
     	return max;
     	
     }
 
+<<<<<<< HEAD
 	@SuppressWarnings("unused")
 	private static boolean checkSequence(int[] seq, int[] array2) {
 		//i checks every value in arr
@@ -350,6 +374,43 @@ public class ArrayMethods {
 //		System.out.println(Arrays.toString(intArray));
 		return intArray;
 	}
+=======
+//	private static void generateAllPossibleArrays(int[] array1) {
+//		for(int i = 0; i < array1.length; i++){
+//			int end = array1.length;
+//			int[] seq = getSequence(i, end, array1);
+//			for(int j = 0; j < seq.length; j++){
+//				end = array1.length - j - 1;
+//				seq = getSequence(i, end, array1);
+//				print(seq);
+//			}
+//		}
+//	}
+//
+//	private static boolean checkSequence(int[] seq, int[] array2) {
+//		for(int i = 0; i < array2.length; i++){
+//			for(int j = 0; j < seq.length; j++){
+//				if(j+i < array2.length && array2[j+i] != seq[j]){
+//					break;
+//				}
+//				else if(j == seq.length-1){
+//					//print(getSequence(i, j, array2));
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+//	}
+//
+//	private static int[] getSequence(int seqStart, int seqEnd, int[] array1) {
+//		int[] intArray = new int[seqEnd-seqStart];
+//		for (int i = 0; i < seqEnd-seqStart; i++) {
+//			//System.out.println(intArray[i]);
+//			intArray[i] = array1[i+seqStart];
+//		}
+//		return intArray;
+//	}
+>>>>>>> refs/remotes/origin/master
 
 	public static int[] generateDistinctItemsList(int n){
         /**
@@ -422,8 +483,13 @@ public class ArrayMethods {
 
 	private static void print(int[] array){
     	for(int n: array){
+<<<<<<< HEAD
     		System.out.print(n + ", ");
+=======
+    		System.out.print(n + ",");
+>>>>>>> refs/remotes/origin/master
     	}
+    	System.out.println();
     }
     
     private static int generateBetweenOneAndN(int n){
