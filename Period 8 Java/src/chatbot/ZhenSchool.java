@@ -19,6 +19,7 @@ public class ZhenSchool implements Chatbot{
 		}
 	}
 	public boolean isTriggered(String userInput) {
+		@SuppressWarnings("unused")
 		String[] triggers = {"school", "class", "teacher"};
 		//Create for loop to iterate though triggers
 		
