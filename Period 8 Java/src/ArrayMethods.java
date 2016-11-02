@@ -302,7 +302,6 @@ public class ArrayMethods {
 //        print(array1);
 //        print(array2);
     	int max = 0;
-<<<<<<< HEAD
     	int count = 0;
     	
     	for (int seqStart = 0; seqStart < array1.length-1; seqStart++) {
@@ -324,7 +323,6 @@ public class ArrayMethods {
 			count = 0;
 		}
     	
-=======
     	int[][] arrayLengths = new int[array1.length][array2.length];
     	for(int i = 0; i < array1.length; i++){
     		for(int j = 0; j < array2.length; j++){
@@ -342,12 +340,10 @@ public class ArrayMethods {
     			}
     		}
     	}
->>>>>>> refs/remotes/origin/master
     	return max;
     	
     }
 
-<<<<<<< HEAD
 	@SuppressWarnings("unused")
 	private static boolean checkSequence(int[] seq, int[] array2) {
 		//i checks every value in arr
@@ -374,7 +370,6 @@ public class ArrayMethods {
 //		System.out.println(Arrays.toString(intArray));
 		return intArray;
 	}
-=======
 //	private static void generateAllPossibleArrays(int[] array1) {
 //		for(int i = 0; i < array1.length; i++){
 //			int end = array1.length;
@@ -410,7 +405,6 @@ public class ArrayMethods {
 //		}
 //		return intArray;
 //	}
->>>>>>> refs/remotes/origin/master
 
 	public static int[] generateDistinctItemsList(int n){
         /**
@@ -483,11 +477,8 @@ public class ArrayMethods {
 
 	private static void print(int[] array){
     	for(int n: array){
-<<<<<<< HEAD
     		System.out.print(n + ", ");
-=======
     		System.out.print(n + ",");
->>>>>>> refs/remotes/origin/master
     	}
     	System.out.println();
     }
