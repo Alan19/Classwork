@@ -5,7 +5,7 @@ public class MapDrawer {
 	public static String[][] map;
 	
 	public static void main(String[] args) {
-		map = new String[7][7];
+		map = new String[10][11];
 		map = drawMap(map);
 		printPic(map);
 	}
