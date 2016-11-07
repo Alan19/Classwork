@@ -128,7 +128,9 @@ public class CaveRoomPd8 {
 			}
 		}
 		if(borderingRooms[indexFound] != null && doors[indexFound] != null && doors[indexFound].isOpen()){
+			CaveExplorer.currentRoom.leave();
 			CaveExplorer.currentRoom = borderingRooms[indexFound];
+			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
 		}
 	}
