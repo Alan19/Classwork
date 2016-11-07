@@ -19,6 +19,7 @@ public class CaveExplorer {
 		}
 		currentRoom = caves[1][2];
 		currentRoom.enter();
+		caves[1][3] = new EventRoom("This is where you found the map!", new GameStartEvent());
 		caves[1][2].setConnection(CaveRoomPd8.WEST, caves[1][1], new Door());
 		caves[1][2].setConnection(CaveRoomPd8.SOUTH, caves[2][2], new Door());
 		caves[1][2].setConnection(CaveRoomPd8.EAST, caves[1][3], new Door());

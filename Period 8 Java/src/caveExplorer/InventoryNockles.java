@@ -5,11 +5,15 @@ public class InventoryNockles {
 	private String map;
 	
 	public InventoryNockles() {
-		hasMap = true;
+		hasMap = false;
 		updateMap();
 	}
 
-	private void updateMap() {
+	public void setHasMap(boolean hasMap) {
+		this.hasMap = hasMap;
+	}
+
+	public void updateMap() {
 		CaveRoomPd8[][] caves = CaveExplorer.caves;
 		//Convert these caves to a string representation
 		map = " ";
