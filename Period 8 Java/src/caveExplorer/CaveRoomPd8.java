@@ -47,6 +47,11 @@ public class CaveRoomPd8 {
 	
 	}
 
+	public static String toDirection(int dir) {
+		String[] strings = {"the North", "the East", "the South", "the West"};
+		return strings[dir];
+	}
+
 	public String getContents(){
 		return contents;
 	}
