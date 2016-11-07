@@ -28,7 +28,7 @@ public class InventoryNockles {
 						str = "  " + contents + " ";
 					}
 					else if (textRow == 2) {
-						if(cr.getDoor(CaveRoomPd8.SOUTH) != null){
+						if(cr.getDoor(CaveRoomPd8.SOUTH) == null){
 							str = "|___";
 						}
 						else {
