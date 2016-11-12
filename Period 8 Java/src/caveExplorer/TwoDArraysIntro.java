@@ -139,7 +139,6 @@ public class TwoDArraysIntro {
 				numberOfMines--;
 			}
 		}
-		
 	}
 	
 	private static String[][] createField(boolean[][] mines) {
