@@ -1,7 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
-import javax.swing.plaf.multi.MultiDesktopIconUI;
 
 public class ArrayMethods {
 
