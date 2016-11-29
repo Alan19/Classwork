@@ -16,6 +16,7 @@ public class AdvancedArrayMethods {
 		arr[a] = temp;
 		
 	}
+	@SuppressWarnings("unused")
 	private static void copyArray(int[] original, int[] target) {
 		if(original.length == target.length){
 			for (int i = 0; i < original.length; i++) {

@@ -1,6 +1,7 @@
 package sort;
 
 public class Pokemon {
+	@SuppressWarnings("unused")
 	private int level;
 	private int hp;
 	private String name;
@@ -17,13 +18,15 @@ public class Pokemon {
 	}
 	
 	public Pokemon(String name, int level){
+		hp = 100;
 		this.name = name;
 		this.level = level;
+		this.poisoned = false;
 	}
 
 
-	public void iChoseYou() {
-		System.out.println(name + " " + name);
+	public void iChooseYou() {
+		System.out.println(name + ", " + name + "!");
 	}
 	
 	public int getHP(){
