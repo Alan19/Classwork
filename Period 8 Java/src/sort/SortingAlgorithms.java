@@ -1,10 +1,13 @@
 package sort;
 
+import java.util.Arrays;
+
+@SuppressWarnings("unused")
 public class SortingAlgorithms {
 
 	public static int[] array = {1, 6, 4, 3, 2, 7};
 	public static void main(String[] args) {
-		System.out.println(quickSort(array, 0, 6));
+//		System.out.println(Arrays.((quickSort(array, 0, 6)));
 
 	}
 

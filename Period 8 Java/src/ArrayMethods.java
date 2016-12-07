@@ -1,7 +1,8 @@
 
 public class ArrayMethods {
 
-    public static void main(String[] args) {
+    @SuppressWarnings("unused")
+	public static void main(String[] args) {
     
      /**
       * IMPORTANT NOTE: 
@@ -33,13 +34,15 @@ public class ArrayMethods {
 //    	print(getSequence(0, 4, intArray));
     }
     
-    private static void print(double[] array) {
+    @SuppressWarnings("unused")
+	private static void print(double[] array) {
 		for (double d : array) {
 			System.out.println(d);
 		}
 		
 	}
 
+	@SuppressWarnings("unused")
 	private static void shuffle(Object[] array) {
     	for(int i = 0; i < array.length; i++){
     		int random = (int)(Math.random()*6);
@@ -340,7 +343,6 @@ public class ArrayMethods {
     	
     }
 
-	@SuppressWarnings("unused")
 	private static boolean checkSequence(int[] seq, int[] array2) {
 		//i checks every value in arr
 		for (int i = 0; i < array2.length; i++) {
@@ -471,6 +473,7 @@ public class ArrayMethods {
 		arr[a] = temp;
 	}
 
+	@SuppressWarnings("unused")
 	private static void print(int[] array){
     	for(int n: array){
     		System.out.print(n + ", ");

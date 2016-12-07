@@ -33,6 +33,7 @@ public class RecursionIntro {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static int factorial(int i) {
 		if(i <= 1) return 1;
 		else{
@@ -40,6 +41,7 @@ public class RecursionIntro {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void forLoop(int i, Action action) {
 		if(i <= 0){
 			return;

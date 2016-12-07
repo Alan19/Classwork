@@ -102,26 +102,7 @@ public class TwoDArraysIntro {
 		return false;
 	}
 
-	private static String[][] makeMap(String[][] map) {
-		for (int row = 0; row < map.length; row++) {
-			for (int col = 0; col < map[0].length; col++) {
-				if(row % 3 == 0){
-					map[row][col] = "_";
-				}
-				else if(inCorner(map, row, col)){
-					map[row][col] = " ";
-				}
-				else if (col % 2 == 0){
-					map[row][col] = "|";
-				}
-				else{
-					map[row][col] = " ";
-				}
-			}
-		}
-		return map;
-	}
-
+	@SuppressWarnings("unused")
 	private static boolean inCorner(String[][] map, int row, int col) {
 		if((row == 0 && col == 0) || (row == 0 && col == map[row].length-1) || (row == map.length-1 && col == 0) || (row == map.length-1 && col == map[0].length-1)){
 			return true;
@@ -129,32 +110,7 @@ public class TwoDArraysIntro {
 		return false;
 	}
 
-	private static void plantMines(boolean[][] mines) {
-		int numberOfMines = 5;
-		while(numberOfMines > 0){
-			int row = (int)(Math.random() * mines.length);
-			int col = (int)(Math.random() * mines[0].length);
-			if(!mines[row][col]){
-				mines[row][col] = true;
-				numberOfMines--;
-			}
-		}
-	}
-	
-	private static String[][] createField(boolean[][] mines) {
-		String[][] field = new String[mines.length][mines[0].length];
-		for(int row = 0; row < field.length; row++){
-			for (int col = 0; col < field[row].length; col++) {
-				if(mines[row][col]) field[row][col] = "X";
-				else{
-					field[row][col] = countNearby(mines, row, col);
-				}
-			}
-		}
-		
-		return field;
-	}
-
+	@SuppressWarnings("unused")
 	private static String countNearby(boolean[][] mines, int row, int col) {
 		int count = 0;
 //		//Three ways of checking for indexOutOfBoundsException

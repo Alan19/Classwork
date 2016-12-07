@@ -2,8 +2,6 @@ package caveExplorer;
 
 import java.util.Scanner;
 
-import introduction.StringPractice;
-
 public class ConenctFour {
 
 	public static Scanner in;

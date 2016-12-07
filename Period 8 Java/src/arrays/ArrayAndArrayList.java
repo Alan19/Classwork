@@ -37,6 +37,7 @@ public class ArrayAndArrayList {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void randomize(int[] array) {
 		for(int i = 0; i < 50; i++){
 			array[i] = randomInteger(25);
@@ -44,6 +45,7 @@ public class ArrayAndArrayList {
 		print(array);
 	}
 
+	@SuppressWarnings("unused")
 	private static void populate(int[] array) {
 		for(int i = 0; i < 50; i++){
 			array[i] = i + 1;
