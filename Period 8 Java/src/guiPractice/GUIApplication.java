@@ -4,16 +4,11 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-public class GUIApplication extends JFrame{
+@SuppressWarnings("serial")
+public abstract class GUIApplication extends JFrame{
 	
 	private Screen currentScreen;
 	
-	//main method for practice only
-	public static void main(String[] args) {
-		new GUIApplication();
-		
-	}
-
 	public GUIApplication(){
 		//Terminate program when window is closed
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,9 +21,14 @@ public class GUIApplication extends JFrame{
 		setVisible(true);
 	}
 
-	protected void initScreen() {
-		Screen startScreen = new Screen(getWidth(), getHeight());
-		currentScreen = startScreen;
+	/**
+	 * method for creating and setting the starting screen
+	 */
+		
+	protected abstract void initScreen();
+	
+	public void setScreen(Screen screen){
+		currentScreen = screen;
 	}
 	
 	public void paint(Graphics g){
