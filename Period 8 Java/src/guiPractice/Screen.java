@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
+@SuppressWarnings("unused")
 public abstract class Screen {
 	
 	private int width;
