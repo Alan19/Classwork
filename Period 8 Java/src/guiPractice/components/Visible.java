@@ -1,10 +1,11 @@
 package guiPractice.components;
 
-import java.awt.image.BufferedImageFilter;
+import java.awt.image.BufferedImage;
+
 
 public interface Visible {
 
-	public BufferedImageFilter getImage();
+	public BufferedImage getImage();
 	public int getX();
 	public int getY();
 	public int getWidth();

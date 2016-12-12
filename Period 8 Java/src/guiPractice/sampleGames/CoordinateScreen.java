@@ -1,5 +1,6 @@
 package guiPractice.sampleGames;
 
+import java.awt.TextArea;
 import java.util.ArrayList;
 
 import guiPractice.Screen;
@@ -16,6 +17,7 @@ public class CoordinateScreen extends Screen {
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
 		label = new TextLabel(40, 45, 760, 40, "Sample Text");
+		paragraph = new TextArea(40, 85, 760, 500, "This is a whole paragraph. Notice how as the paragraph gets to the edge of the page, a new line is created.");
 		viewObjects.add(label);
 	}
 

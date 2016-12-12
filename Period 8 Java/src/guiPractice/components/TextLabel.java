@@ -7,6 +7,18 @@ import java.awt.RenderingHints;
 
 public class TextLabel extends Component {
 
+	public String getText() {
+		return text;
+	}
+
+	public String getFont() {
+		return font;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
 	private String text;
 	private String font;
 	private int size;
@@ -35,8 +47,10 @@ public class TextLabel extends Component {
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
-		g.setFont(new Font(font, Font.PLAIN, size));
-		g.drawString(text, 4, getHeight()-5);
+		if (text != null) {
+			g.setFont(new Font(font, Font.PLAIN, size));
+			g.drawString(text, 4, getHeight()-5);			
+		}
 	}
 
 }

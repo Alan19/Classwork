@@ -27,7 +27,7 @@ public abstract class Component implements Visible {
 	public abstract void update(Graphics2D g);
 
 	@Override
-	public BufferedImageFilter getImage() {
+	public BufferedImage getImage() {
 		return null;
 	}
 
@@ -59,7 +59,7 @@ public abstract class Component implements Visible {
 	@Override
 	public void update() {
 		update(image.createGraphics());
-
+		
 	}
 
 }

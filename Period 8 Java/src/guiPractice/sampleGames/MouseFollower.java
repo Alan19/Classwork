@@ -5,7 +5,7 @@ import guiPractice.GUIApplication;
 @SuppressWarnings("serial")
 public class MouseFollower extends GUIApplication {
 
-	public static void main(String[] args)[]{
+	public static void main(String[] args){
 		new MouseFollower();
 	}
 	
