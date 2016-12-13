@@ -2,7 +2,6 @@ package guiPractice.components;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageFilter;
 
 public abstract class Component implements Visible {
 
@@ -23,12 +22,18 @@ public abstract class Component implements Visible {
 		update(image.createGraphics());
 	}
 	
+	public Graphics2D clear(){
+		//resets the picture
+		image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+		return image.createGraphics();
+	}
+	
 //	Draws the components
 	public abstract void update(Graphics2D g);
 
 	@Override
 	public BufferedImage getImage() {
-		return null;
+		return image;
 	}
 
 	@Override

@@ -33,18 +33,22 @@ public class TextLabel extends Component {
 
 	public void setText(String s) {
 		this.text = s;
+		update(); //Picture matches the data
 	}
 	
 	public void setFont(String font){
 		this.font = font;
+		update();
 	}
 	
 	public void setSize(int size){
 		this.size = size;
+		update();
 	}
 	
 	@Override
 	public void update(Graphics2D g) {
+		g = clear(); //clears image and gets new graphics
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
 		if (text != null) {
