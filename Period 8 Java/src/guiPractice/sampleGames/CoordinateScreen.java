@@ -25,10 +25,10 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
 		label = new TextLabel(40, 45, 760, 40, "Sample Text");
-		paragraph = new TextArea(40, 85, 760, 500, "YOLO tilde tofu pour-over, cornhole quinoa banh mi. Kogi selvage authentic, vexillologist viral cray skateboard etsy biodiesel ramps af fixie tbh schlitz vegan. Whatever umami pinterest schlitz. Tousled gentrify next level yuccie, tattooed lumbersexual meditation fixie air plant crucifix mixtape mustache chambray. VHS ethical neutra sustainable crucifix cray, mustache selvage glossier. Roof party slow-carb af helvetica. Pop-up chambray meh swag jean shorts narwhal.");
-		button = new Button(100, 100, 50, 50, "Click Me!", new Color(50, 60, 100), null);
+//		paragraph = new TextArea(40, 85, 760, 500, "YOLO tilde tofu pour-over, cornhole quinoa banh mi. Kogi selvage authentic, vexillologist viral cray skateboard etsy biodiesel ramps af fixie tbh schlitz vegan. Whatever umami pinterest schlitz. Tousled gentrify next level yuccie, tattooed lumbersexual meditation fixie air plant crucifix mixtape mustache chambray. VHS ethical neutra sustainable crucifix cray, mustache selvage glossier. Roof party slow-carb af helvetica. Pop-up chambray meh swag jean shorts narwhal.");
+		button = new Button(100, 300, 100, 50, "Click Me!", new Color(255, 255, 100), null);
 		viewObjects.add(label);
-		viewObjects.add(paragraph);
+//		viewObjects.add(paragraph);
 		viewObjects.add(button);
 	}
 
