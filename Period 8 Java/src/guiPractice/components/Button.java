@@ -11,6 +11,16 @@ import java.awt.event.MouseMotionListener;
 public class Button extends TextLabel implements Clickable, MouseMotionListener{
 	
 	private Color color;
+	
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+		update();
+	}
+
 	private Action act;
 
 	public Button(int x, int y, int w, int h, String text, Color color, Action act) {
@@ -24,12 +34,19 @@ public class Button extends TextLabel implements Clickable, MouseMotionListener{
 	public void update(Graphics2D g) {
 		g.setColor(color);
 		g.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
-		g.setColor(color.black);
-		g.drawRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
+		g.setColor(color.green);
+		g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, 15, 15);
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
+		//in case text is too wide, cut off
+//		String t = getText();
+//		int cutoff = t.length();
+//		while (cutoff > 0 && fm.stringWidth(t)/2) {
+//			
+//		}
+		
 		if (getText() != null) {
-			g.setFont(new Font("Calibri", Font.PLAIN, 16));
+			g.setFont(new Font("Arial", Font.PLAIN, 16));
 			g.drawString(getText(), 0, getHeight()/2);			
 		}
 //		FontMetrics fm = g.getFontMetrics();
@@ -54,7 +71,7 @@ public class Button extends TextLabel implements Clickable, MouseMotionListener{
 	
 	@Override
 	public void act() {
-//		act;
+		
 	}
 
 	@Override
