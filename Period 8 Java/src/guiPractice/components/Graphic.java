@@ -19,6 +19,20 @@ public class Graphic implements Visible {
 		loadImages(imageLocation, 0, 0);
 	}
 	
+	public Graphic(int x, int y, int w, int h, String imageLocation){
+		this.x = x;
+		this.y = y;
+		loadedImages = false;
+		loadImages(imageLocation, w, h);
+	}
+	
+	public Graphic(int x, int y, double scale, String imageLocation){
+		this.x = x;
+		this.y = y;
+		loadedImages = false;
+		loadImages(imageLocation, 0, 0);
+	}
+	
 	private void loadImages(String imageLocation, int w, int h) {
 		try {
 			//get the image from file
@@ -30,7 +44,10 @@ public class Graphic implements Visible {
 				g.drawImage(icon.getImage(), 0, 0, null);
 			}
 			else {
-				//cust custom size
+				image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+				Graphics2D g = image.createGraphics();
+				//select coordinates of top left rectangle within image. Then, select width and height to display graphic. Then of the icon you want to display, select x, y coordinates and width height. This can split the image into parts. 
+				g.drawImage(icon.getImage(), 0, 0, w, h, 0, 0, icon.getIconWidth(),icon.getIconHeight(), null);
 			}
 			loadedImages = true;
 		} catch (Exception e) {

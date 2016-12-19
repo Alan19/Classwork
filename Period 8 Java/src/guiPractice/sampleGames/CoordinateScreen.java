@@ -19,6 +19,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 	@SuppressWarnings("unused")
 	private TextArea paragraph;
 	private Button button;
+	private Graphic picture;
 	
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
@@ -36,11 +37,11 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 				System.out.println("You clicked me!");
 			}
 		});
-		Graphic picture = new Graphic(300, 200, "sampleImages/panorama_3.png");
+		picture = new Graphic(50, 200, "resources/sampleImages/panorama_3.png");
+		viewObjects.add(picture);
 		viewObjects.add(label);
 		viewObjects.add(paragraph);
 		viewObjects.add(button);
-		viewObjects.add(picture);
 	}
 
 	@Override
