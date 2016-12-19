@@ -30,7 +30,7 @@ public class Graphic implements Visible {
 		this.x = x;
 		this.y = y;
 		loadedImages = false;
-		loadImages(imageLocation, 0, 0);
+		loadImages(imageLocation, scale);
 	}
 	
 	private void loadImages(String imageLocation, int w, int h) {
@@ -57,8 +57,19 @@ public class Graphic implements Visible {
 	}
 
 	private void loadImages(String imageLocation, double scale) {
-		// TODO Auto-generated method stub
-		
+		try {
+			//get the image from file
+			ImageIcon icon = new ImageIcon(imageLocation);
+			int newWidth = (int)(icon.getIconWidth() * scale);
+			int newHeight = (int)(icon.getIconHeight() * scale);
+			image = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
+			Graphics2D g = image.createGraphics();
+			g.drawImage(icon.getImage(), 0, 0, newWidth, newHeight, 0, 0, icon.getIconWidth(), icon.getIconHeight(), null);
+			loadedImages = true;
+		} catch (Exception e) {
+			//in case file is not found
+			e.printStackTrace();
+		}
 	}
 
 	@Override

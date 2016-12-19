@@ -16,7 +16,6 @@ import guiPractice.components.Visible;
 public class CoordinateScreen extends Screen implements MouseMotionListener{
 
 	private TextLabel label;
-	@SuppressWarnings("unused")
 	private TextArea paragraph;
 	private Button button;
 	private Graphic picture;
@@ -37,7 +36,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 				System.out.println("You clicked me!");
 			}
 		});
-		picture = new Graphic(50, 200, "resources/sampleImages/panorama_3.png");
+		picture = new Graphic(200, 200, .2, "resources/sampleImages/panorama_3.png");
 		viewObjects.add(picture);
 		viewObjects.add(label);
 		viewObjects.add(paragraph);
@@ -46,7 +45,6 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 
 	@Override
 	public void mouseDragged(MouseEvent m) {
-		// TODO Auto-generated method stub
 		
 	}
 
