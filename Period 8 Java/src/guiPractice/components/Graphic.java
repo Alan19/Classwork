@@ -10,6 +10,7 @@ public class Graphic implements Visible {
 	private int x;
 	private int y;
 	private BufferedImage image;
+	@SuppressWarnings("unused")
 	private boolean loadedImages;
 	
 	public Graphic(int x, int y, String imageLocation){
