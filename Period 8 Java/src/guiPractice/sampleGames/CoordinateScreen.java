@@ -34,7 +34,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 			
 			@Override
 			public void act() {
-				System.out.println("You clicked me!");
+				MouseCoordinateGame.game.setScreen(MouseCoordinateGame.myScreen);
 			}
 		});
 		picture = new Graphic(200, 200, .2, "resources/sampleImages/panorama_3.png");
@@ -60,8 +60,8 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(button.isHovered(e.getX(), e.getY()));
+			button.act();
 	}
 
 	@Override
@@ -86,5 +86,9 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public MouseListener getMouseListener() {
+		return this;
 	}
 }

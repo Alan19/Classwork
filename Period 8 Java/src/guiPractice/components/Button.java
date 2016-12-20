@@ -11,6 +11,7 @@ import java.awt.event.MouseMotionListener;
 public class Button extends TextLabel implements Clickable, MouseMotionListener{
 	
 	private Color color;
+	private Action act;
 	
 	public Color getColor() {
 		return color;
@@ -21,7 +22,6 @@ public class Button extends TextLabel implements Clickable, MouseMotionListener{
 		update();
 	}
 
-	private Action act;
 
 	public Button(int x, int y, int w, int h, String text, Color color, Action act) {
 		super(x, y, w, h, text);
@@ -71,7 +71,7 @@ public class Button extends TextLabel implements Clickable, MouseMotionListener{
 	
 	@Override
 	public void act() {
-		
+		act.act();
 	}
 
 	@Override

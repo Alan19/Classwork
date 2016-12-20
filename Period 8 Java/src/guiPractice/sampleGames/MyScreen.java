@@ -14,6 +14,7 @@ import guiPractice.components.Visible;
 public class MyScreen extends Screen implements MouseListener{
 
 	public Button back;
+	public Action action;
 	
 	public MyScreen(int width, int height) {
 		super(width, height);
@@ -22,21 +23,25 @@ public class MyScreen extends Screen implements MouseListener{
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		@SuppressWarnings("unused")
-		Graphic mario = new Graphic(0, 0, "resources/panorama_3.png");
-		back = new Button(100, 100, 30, 100, "Click Me!", new Color(43, 83, 189), new Action() {
+		Graphic mario = new Graphic(0, 0, .5, "resources/sampleImages/panorama_5.png");
+		back = new Button(100, 100, 300, 100, "Click Me!", new Color(43, 83, 189), new Action() {
 			
 			@Override
 			public void act() {
 				MouseCoordinateGame.game.setScreen(MouseCoordinateGame.coordScreen);
 			}
 		});
+		viewObjects.add(mario);
+		viewObjects.add(back);
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if(back.isHovered(e.getX(), e.getY())){
+			back.act();
+		}
 		
+			
 	}
 
 	@Override

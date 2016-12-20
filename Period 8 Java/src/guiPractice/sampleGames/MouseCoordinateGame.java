@@ -1,18 +1,14 @@
 package guiPractice.sampleGames;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
 import guiPractice.GUIApplication;
-import guiPractice.components.Button;
 
 
+@SuppressWarnings("serial")
 public class MouseCoordinateGame extends GUIApplication{
 
 	public static MouseCoordinateGame game;
 	public static CoordinateScreen coordScreen;
-	public static MyScreen moveScreen;
+	public static MyScreen myScreen;
 
 	public static void main(String[] args){
 
@@ -25,8 +21,9 @@ public class MouseCoordinateGame extends GUIApplication{
 	
 	@Override
 	protected void initScreen() {
-		// TODO Auto-generated method stub
-
+		myScreen = new MyScreen(getWidth(), getHeight());
+		coordScreen = new CoordinateScreen(getWidth(), getHeight());
+		setScreen(coordScreen);
 	}
 
 
