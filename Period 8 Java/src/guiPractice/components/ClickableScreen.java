@@ -26,10 +26,6 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 		}
 	}
 
-//	public boolean isHovered(int x, int y) {
-//		return inBetween(x, getX(), getX() + getWidth()) && inBetween(x, getY(), getY() + getHeight());
-//	}
-
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 
