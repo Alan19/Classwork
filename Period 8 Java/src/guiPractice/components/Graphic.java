@@ -27,6 +27,26 @@ public class Graphic implements Visible {
 		loadImages(imageLocation, w, h);
 	}
 	
+	public boolean isLoadedImages() {
+		return loadedImages;
+	}
+
+	public void setLoadedImages(boolean loadedImages) {
+		this.loadedImages = loadedImages;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public void setImage(BufferedImage image) {
+		this.image = image;
+	}
+
 	public Graphic(int x, int y, double scale, String imageLocation){
 		this.x = x;
 		this.y = y;

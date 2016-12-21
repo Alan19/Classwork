@@ -29,11 +29,12 @@ public class TestScreen extends Screen implements MouseInputListener {
 	
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		back = new ClickableGraphic(0, 0, "resources/sampleImages/panorama_5.png", new Action() {
+		back = new ClickableGraphic(0, 0, .5, "resources/sampleImages/panorama_5.png");
+		back.setAction(new Action() {
 			
 			@Override
 			public void act() {
-				System.out.println("Hi!");
+				back.setX(back.getX()+10);
 			}
 		});
 		viewObjects.add(back);

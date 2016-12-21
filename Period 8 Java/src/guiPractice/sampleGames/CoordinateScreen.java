@@ -40,14 +40,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 			}
 		});
 		picture = new Graphic(200, 200, .2, "resources/sampleImages/panorama_3.png");
-		interactiveImage = new ClickableGraphic(200, 200, .1, "resources/sampleImages/panorama_3.png", new Action() {
-			
-			@Override
-			public void act() {
-				MouseCoordinateGame.game.setScreen(MouseCoordinateGame.myScreen);
-				
-			}
-		});
+		interactiveImage = new ClickableGraphic(200, 200, "resources/sampleImages/panorama_3.png");
 		viewObjects.add(picture);
 		viewObjects.add(label);
 		viewObjects.add(paragraph);
