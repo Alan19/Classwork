@@ -2,7 +2,6 @@ package guiPractice.components;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
@@ -34,7 +33,7 @@ public class Button extends TextLabel implements Clickable, MouseMotionListener{
 	public void update(Graphics2D g) {
 		g.setColor(color);
 		g.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
-		g.setColor(color.green);
+		g.setColor(color);
 		g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, 15, 15);
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
