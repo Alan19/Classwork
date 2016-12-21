@@ -13,12 +13,12 @@ public class MouseFollower extends GUIApplication implements MouseListener{
 		app.start();
 	}
 	
-	private CoordinateScreen coordScreen;
+	private MyScreen myScreen;
 	
 	@Override
 	protected void initScreen() {
-		coordScreen = new CoordinateScreen(getWidth(), getHeight());
-		setScreen(coordScreen);
+		myScreen = new MyScreen(getWidth(), getHeight());
+		setScreen(myScreen);
 	}
 	
 	

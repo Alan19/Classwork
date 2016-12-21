@@ -15,6 +15,7 @@ public class MyScreen extends Screen implements MouseListener{
 
 	public Button back;
 	public Action action;
+	public Button testButton;
 	
 	public MyScreen(int width, int height) {
 		super(width, height);
@@ -33,6 +34,14 @@ public class MyScreen extends Screen implements MouseListener{
 		});
 		viewObjects.add(mario);
 		viewObjects.add(back);
+		testButton = new Button(300, 300, 100, 50, "Hi", Color.red, new Action() {
+			
+			@Override
+			public void act() {
+				System.out.println("Hi!");
+			}
+		});
+		viewObjects.add(testButton);
 	}
 
 	@Override
@@ -40,8 +49,6 @@ public class MyScreen extends Screen implements MouseListener{
 		if(back.isHovered(e.getX(), e.getY())){
 			back.act();
 		}
-		
-			
 	}
 
 	@Override

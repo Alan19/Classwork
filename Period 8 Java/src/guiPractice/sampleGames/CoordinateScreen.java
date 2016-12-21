@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import guiPractice.Screen;
 import guiPractice.components.Action;
 import guiPractice.components.Button;
+import guiPractice.components.ClickableGraphic;
 import guiPractice.components.Graphic;
 import guiPractice.components.TextArea;
 import guiPractice.components.TextLabel;
@@ -20,6 +21,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 	private TextArea paragraph;
 	private Button button;
 	private Graphic picture;
+	private ClickableGraphic interactiveImage;
 	
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
@@ -38,10 +40,19 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 			}
 		});
 		picture = new Graphic(200, 200, .2, "resources/sampleImages/panorama_3.png");
+		interactiveImage = new ClickableGraphic(200, 200, .1, "resources/sampleImages/panorama_3.png", new Action() {
+			
+			@Override
+			public void act() {
+				MouseCoordinateGame.game.setScreen(MouseCoordinateGame.myScreen);
+				
+			}
+		});
 		viewObjects.add(picture);
 		viewObjects.add(label);
 		viewObjects.add(paragraph);
 		viewObjects.add(button);
+		viewObjects.add(interactiveImage);
 	}
 
 	@Override
