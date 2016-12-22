@@ -2,36 +2,28 @@ package guiPractice.sampleGames;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import guiPractice.GUIApplication;
 
 @SuppressWarnings("serial")
-public class MouseFollower extends GUIApplication implements MouseListener{
-	
-	private MyScreen myScreen;
+public class ClickableGame extends GUIApplication implements MouseListener{
 
 	public static void main(String[] args){
 		GUIApplication game = new MouseFollower();
 		Thread app = new Thread(game);
 		app.start();
 	}
-	
+
 	@Override
 	protected void initScreen() {
-		myScreen = new MyScreen(getWidth(), getHeight());
-		setScreen(myScreen);
-	}
-	
-	
+		// TODO Auto-generated method stub
 
-	@SuppressWarnings("unused")
+	}
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		int x = e.getX();
-		int y = e.getY();
-	}
-	
-	public MouseListener getMouseListener(){
-		return this;
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
