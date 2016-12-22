@@ -71,6 +71,6 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 		return this;
 	}
 
-	abstract void initAllObjects(List<Visible> clickable);
+	public abstract void initAllObjects(List<Visible> clickable);
 
 }
