@@ -11,8 +11,8 @@ public class WhackAMoleGame extends GUIApplication {
 
 	@Override
 	protected void initScreen() {
-		@SuppressWarnings("unused")
 		WhackAMoleScreen wams = new WhackAMoleScreen(getWidth(), getHeight());
+		setScreen(wams);
 
 	}
 
@@ -22,4 +22,7 @@ public class WhackAMoleGame extends GUIApplication {
 		app.start();
 	}
 
+	private PlayerInterface getAPlaywer(){
+		return null;
+	}
 }
