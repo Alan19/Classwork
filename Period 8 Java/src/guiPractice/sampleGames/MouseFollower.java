@@ -23,6 +23,7 @@ public class MouseFollower extends GUIApplication implements MouseListener{
 	
 	
 
+	@SuppressWarnings("unused")
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX();

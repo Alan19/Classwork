@@ -1,8 +1,6 @@
 package guiPractice;
 
 import java.awt.Graphics;
-import java.awt.event.MouseMotionListener;
-
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
