@@ -25,4 +25,8 @@ public class WhackAMoleGame extends GUIApplication {
 	private PlayerInterface getAPlaywer(){
 		return null;
 	}
+	
+	private MoleInterface getAMole(){
+		return null;
+	}
 }
