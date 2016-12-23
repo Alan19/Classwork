@@ -109,6 +109,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 	 * @return
 	 */
 	private MoleInterface getAMole(){
+		
 		return new Mole((int) (getWidth()*Math.random())-100, (int)(getHeight()*Math.random()), "resources/sampleImages/Diglett-A.png");
 	}
 
