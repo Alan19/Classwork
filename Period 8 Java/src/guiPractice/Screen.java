@@ -63,7 +63,8 @@ public abstract class Screen {
 		
 		g.setColor(Color.black);
 //		Draw all visible components
-		for(Visible v:viewObjects){
+		for(int i = 0; i < viewObjects.size(); i++){
+			Visible v = viewObjects.get(i);
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
 	}
@@ -104,6 +105,24 @@ public abstract class Screen {
 			 *			i--;
 			 *		}
 			 *	}
+			 *
+			 *Also Correct:
+			 *
+			 *	for(int i = 0; i < list.size(); i++){
+			 *		while(i < list.size() && list.get(i) > 5){
+			 *			list.remove(i);
+			 *		}
+			 *	}
+			 *
+			 *For this reason, the following doesn't even work!
+			 *
+			 *	for(Integer i: list){
+			 *		if(i > 5) list.remove(i);
+			 *	}
+			 *
+			 *FINALLY, if you remove using an index, it returns the removed object so you can do this:
+			 *
+			 *	System.out.println(list.remove(0).toString() + " was removed.";
 			 */
 			//This removes the object that has the same identity as v, not an object that is equal to v
 			viewObjects.remove(v);
