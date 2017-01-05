@@ -43,8 +43,8 @@ public class SimonScreenZhen extends ClickableScreen implements Runnable {
 	}
 
 	@Override
-	public void initAllObjects(List<Visible> clickable) {
-		addButtons();
+	public void initAllObjects(List<Visible> viewObjects) {
+		addButtons(viewObjects);
 		progress = getProgress();
 		label = new TextLabel(130,230,300,40,"Let's play Simon!");
 		moveList = new ArrayList<MoveInterfaceZhen>();
@@ -78,7 +78,7 @@ public class SimonScreenZhen extends ClickableScreen implements Runnable {
 		return null;
 	}
 	
-	public void addButtons(){
+	public void addButtons(List<Visible> viewObjects){
 		int numberOfButtons = 6;
 		Color[] colors = new Color[6];
 		colors[0] = new Color(100,180,255);
@@ -100,7 +100,12 @@ public class SimonScreenZhen extends ClickableScreen implements Runnable {
 						Thread blink = new Thread(new Runnable() {
 							public void run() {
 								b.highlight();
-								Thread.sleep(800);
+								try {
+									Thread.sleep(800);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
 								b.dim();
 							}
 						});
