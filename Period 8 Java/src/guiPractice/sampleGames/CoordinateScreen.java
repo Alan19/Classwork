@@ -11,6 +11,7 @@ import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableGraphic;
 import guiPractice.components.Graphic;
+import guiPractice.components.MovingComponent;
 import guiPractice.components.TextArea;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
@@ -40,12 +41,18 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 			}
 		});
 		picture = new Graphic(200, 200, .2, "resources/sampleImages/panorama_3.png");
+		
+		MovingComponent mc = new MovingComponent(30, 60, 80, 80);
 		interactiveImage = new ClickableGraphic(200, 200, "resources/sampleImages/panorama_3.png");
 		viewObjects.add(picture);
 		viewObjects.add(label);
 		viewObjects.add(paragraph);
 		viewObjects.add(button);
 		viewObjects.add(interactiveImage);
+		viewObjects.add(mc);
+		
+//		MovingComponent movingComponent = new MovingComponent(30, 60, 80, 80);
+				
 	}
 
 	@Override
@@ -95,4 +102,5 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 	public MouseListener getMouseListener() {
 		return this;
 	}
+	
 }
