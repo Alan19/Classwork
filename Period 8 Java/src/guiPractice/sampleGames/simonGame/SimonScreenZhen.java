@@ -97,10 +97,18 @@ public class SimonScreenZhen extends ClickableScreen implements Runnable {
 								b.dim();
 							}
 						});
-						
-					}
+						blink.start();
+						if(b == moveList.get(sequenceIndex).getButton()){
+							sequenceIndex++;
+						}
+						if(sequenceIndex == moveList.size()){
+							Thread nextRound = new Thread(SimonScreenZhen.this);
+							nextRound.start();
+						}
+					}					
 				}
 			});
+			viewObjects.add(b);
 		}
 	}
 
