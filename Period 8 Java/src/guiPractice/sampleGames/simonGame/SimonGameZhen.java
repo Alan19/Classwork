@@ -4,7 +4,7 @@ import guiPractice.GUIApplication;
 
 @SuppressWarnings("serial")
 public class SimonGameZhen extends GUIApplication {
-
+	
 	public SimonGameZhen() {
 		// TODO Auto-generated constructor stub
 	}

@@ -1,9 +1,11 @@
 package guiPractice.sampleGames.simonGame;
 
+import java.awt.Color;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.TextLabel;
@@ -67,10 +69,39 @@ public class SimonScreenZhen extends ClickableScreen implements Runnable {
 		// Placeholder until partner finishes implementation of ProgressInterface
 		return null;
 	}
-
-	private void addButtons() {
-		// TODO Auto-generated method stub
-		
+	
+	public void addButtons(){
+		int numberOfButtons = 6;
+		Color[] colors = new Color[6];
+		colors[0] = new Color(100,180,255);
+		colors[1] = new Color(51,180,30);
+		colors[2] = new Color(83,10,200);
+		colors[3] = new Color(72,125,230);
+		colors[4] = new Color(100,125,200);
+		colors[5] = new Color(72,125,230);
+		colors[6] = new Color(10,209,169);
+		for (int i = 0; i < numberOfButtons; i++) {
+			final ButtonInterfaceZhen b = getAButton();
+			b.setColor(colors[i]);
+			b.setX(i * 30);
+			b.setY(50);
+			b.setAction(new Action() {
+				
+				@Override
+				public void act() {
+					if (acceptingOutput) {
+						Thread blink = new Thread(new new Runnable() {
+							public void run() {
+								b.highlight();
+								Thread.sleep(800);
+								b.dim();
+							}
+						});
+						
+					}
+				}
+			});
+		}
 	}
 
 }
