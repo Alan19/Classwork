@@ -28,8 +28,10 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 		moles = new ArrayList<MoleInterface>();
 		player = getAPlayer();
 		label = new TextLabel(getWidth()/2-60, getHeight()/2-30, 120, 60, "Ready...");
-		timeLabel = new TextLabel(getWidth()/2-60, getHeight()/2-30, 120, 60, "Ready...");
+		timeLabel = new TextLabel(getWidth()/2-60, getHeight()/2-30, 120, 60, "");
 		viewObjects.add(label);
+		viewObjects.add(player);
+		viewObjects.add(timeLabel);
 	}
 
 
@@ -47,7 +49,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 				e.printStackTrace();
 			}
 			timeLeft -= .1;
-			timeLabel.setFont(""+(int)(timeLeft*10)/10.0);
+			timeLabel.setText(""+(int)(timeLeft*10)/10.0);
 			disappearMoles();
 			addNewMoles();
 		}
@@ -55,7 +57,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 	
 	private void addNewMoles() {
 		//probability of mole appearing depends on time left
-		double probability = .2 + .1*(30.0-timeLeft/30);
+		double probability = .2 + .001*(30.0-timeLeft/30);
 		if(Math.random() < probability){
 			final MoleInterface mole = getAMole();
 			mole.setAppreanceTime((int) (500 + Math.random()*2000));
@@ -100,7 +102,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 	 */
 	
 	private PlayerInterface getAPlayer(){
-		return null;
+		return new Player(20, 20, 100, 100);
 	}
 	
 	/**
@@ -109,7 +111,8 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 	 * @return
 	 */
 	private MoleInterface getAMole(){
-		return new Mole((int) (getWidth()*Math.random())-100, (int)(getHeight()*Math.random()), "resources/sampleImages/Diglett-A.png");
+		String[] moleImages = {"resources/sampleImages/Drillbur.png", "resources/sampleImages/Diglett-A.png", "resources/sampleImages/Diglett.png"};
+		return new Mole((int) (getWidth()*Math.random())-100, (int)((getHeight()-100)*Math.random() + 100), moleImages[(int) (Math.random()*moleImages.length)]);
 	}
 
 	private void changeText(String s) {

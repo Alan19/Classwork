@@ -18,7 +18,7 @@ public class SimonScreenZhen extends ClickableScreen implements Runnable {
 	private ProgressInterfaceZhen progress;
 	private ArrayList<MoveInterfaceZhen> moveList;
 	private int roundNumber;
-	private boolean acceptingOutput;
+	private boolean acceptingInput;
 	private int sequenceIndex;
 	private int lastSelectedButton;
 
@@ -30,8 +30,16 @@ public class SimonScreenZhen extends ClickableScreen implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		label.setText("");
+		nextRound();
+		progress.setRound(0);
+		progress.setSequenceSize(3);
+	}
 
+	private void nextRound() {
+		acceptingInput = false;
+		roundNumber++;
+		moveList.add(randomMove());
 	}
 
 	@Override
@@ -79,18 +87,17 @@ public class SimonScreenZhen extends ClickableScreen implements Runnable {
 		colors[3] = new Color(72,125,230);
 		colors[4] = new Color(100,125,200);
 		colors[5] = new Color(72,125,230);
-		colors[6] = new Color(10,209,169);
 		for (int i = 0; i < numberOfButtons; i++) {
 			final ButtonInterfaceZhen b = getAButton();
 			b.setColor(colors[i]);
-			b.setX(i * 30);
+			b.setX((i+1) * 30);
 			b.setY(50);
 			b.setAction(new Action() {
 				
 				@Override
 				public void act() {
-					if (acceptingOutput) {
-						Thread blink = new Thread(new new Runnable() {
+					if (acceptingInput) {
+						Thread blink = new Thread(new Runnable() {
 							public void run() {
 								b.highlight();
 								Thread.sleep(800);
@@ -111,5 +118,11 @@ public class SimonScreenZhen extends ClickableScreen implements Runnable {
 			viewObjects.add(b);
 		}
 	}
+
+	private ButtonInterfaceZhen getAButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

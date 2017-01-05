@@ -22,7 +22,7 @@ public class ClickableGraphic extends Graphic implements Clickable{
 
 	@Override
 	public boolean isHovered(int x, int y) {
-		return inBetween(x, getX(), getX() + getWidth()) && inBetween(x, getY(), getY() + getHeight());
+		return inBetween(x, getX(), getX() + getWidth()) && inBetween(y, getY(), getY() + getHeight());
 	}
 
 	public boolean inBetween(int x, int y, int z){
