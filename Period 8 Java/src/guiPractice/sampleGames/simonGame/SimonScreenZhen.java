@@ -32,14 +32,45 @@ public class SimonScreenZhen extends ClickableScreen implements Runnable {
 	public void run() {
 		label.setText("");
 		nextRound();
-		progress.setRound(0);
-		progress.setSequenceSize(3);
+	}
+	
+	public void changeText(String message){
+		try {
+			Thread.sleep(1000);
+			label.setText(message);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void nextRound() {
 		acceptingInput = false;
 		roundNumber++;
 		moveList.add(randomMove());
+		progress.setRound(moveList.size());
+		progress.setSequenceSize(moveList.size());
+		changeText("Simon's Turn");
+		label.setText("");
+		playSequence();
+		changeText("Your turn");
+		acceptingInput = true;
+		sequenceIndex = 0;
+	}
+
+	private void playSequence() {
+		ButtonInterfaceZhen b = null;
+		for (int i = 0; i < buttons.length; i++) {
+			if(b != null) b.dim();
+			b = moveList.get(sequenceIndex).getButton();
+			int sleepTime = 2000 - 10*(5-i);
+			if(i <= 200) sleepTime = 200;
+			try {
+				Thread.sleep(sleepTime);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			b.dim();
+		}
 	}
 
 	@Override
