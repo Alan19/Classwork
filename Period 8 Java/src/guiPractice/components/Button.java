@@ -55,7 +55,7 @@ public class Button extends TextLabel implements Clickable, MouseMotionListener{
 
 	@Override
 	public boolean isHovered(int x, int y) {
-		if(inBetween(x, getX(), getX() + getWidth()) && inBetween(x, getY(), getY() + getHeight()))
+		if(inBetween(x, getX(), getX() + getWidth()) && inBetween(y, getY(), getY() + getHeight()))
 			return true;
 		else 
 			return false;
