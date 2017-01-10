@@ -24,7 +24,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 	}
 
 	@Override
-	public void initAllObjects(List<Visible> viewObjects) {
+	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		moles = new ArrayList<MoleInterface>();
 		player = getAPlayer();
 		label = new TextLabel(getWidth()/2-60, getHeight()/2-30, 120, 60, "Ready...");
