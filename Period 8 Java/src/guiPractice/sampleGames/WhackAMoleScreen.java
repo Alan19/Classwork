@@ -1,7 +1,6 @@
 package guiPractice.sampleGames;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import guiPractice.components.Action;
 import guiPractice.components.ClickableScreen;
